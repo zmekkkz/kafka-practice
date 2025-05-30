@@ -37,3 +37,8 @@ bin/kafka-console-consumer.sh --topic demo_testing_kafka --bootstrap-server 34.1
 **Note:**  
 - Adjust the `--bootstrap-server` address as needed for your environment.
 - For Python producer/consumer, see `Producer.py` and `Consumer.py` in this repository.
+
+## Note About IP Address
+
+The IP address (34.126.117.10) shown in the examples is a test VM environment and does not contain sensitive information. It is included for demonstration purposes only.
+
