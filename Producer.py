@@ -11,4 +11,4 @@ fake = Faker()
 while True:
     dict_stock = {'name':fake.name(),'address':fake.address(),'text':fake.text()}
     producer.send('demo_testing_kafka',value=dict_stock)
-    sleep(0.01)
+    sleep(1)

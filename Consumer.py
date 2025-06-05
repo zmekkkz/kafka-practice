@@ -31,6 +31,7 @@ consumer = KafkaConsumer(
 
 for c in consumer:
     data = c.value
+    print(data)
     record = KafkaData(
         name=data.get('name'),
         address=data.get('address'),
