@@ -14,6 +14,7 @@ consumer = KafkaConsumer(
 
 # Transform the incoming Kafka message
 def transform_message(msg:dict) -> dict:
+    """Clean and transform the incoming message."""
     name_parts = msg.get('name', '').split()
     first_name = name_parts[0] if len(name_parts) > 0 else ''
     last_name = " ".join(name_parts[1:]) if len(name_parts) > 1 else ''
@@ -33,6 +34,7 @@ def transform_message(msg:dict) -> dict:
 
 # Insert transformed data into PostgreSQL
 def insert_to_postgres(conn:psycopg2.extensions.connection, transformed:dict) -> None:
+    """Insert transformed data into PostgreSQL database."""
     with conn.cursor() as cur:
         cur.execute("""
             INSERT INTO user_messages (first_name, last_name, address, text, word_count, ingested_at)
@@ -49,6 +51,7 @@ def insert_to_postgres(conn:psycopg2.extensions.connection, transformed:dict) ->
 
 # PostgreSQL connection setup
 def get_postgres_connection() -> psycopg2.extensions.connection:
+    """Create and return a PostgreSQL connection."""
     return psycopg2.connect(
         dbname='mek',
         user='airflow',
@@ -59,6 +62,7 @@ def get_postgres_connection() -> psycopg2.extensions.connection:
 
 # Main pipeline
 def main() -> None:
+    """Main function to consume messages and insert into PostgreSQL."""
     conn = get_postgres_connection()
     print("Started consuming messages...")
 

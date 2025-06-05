@@ -2,7 +2,8 @@
 """
 consumer.py
 
-Kafka consumer that reads messages from Kafka and stores them in a PostgreSQL database using SQLAlchemy.
+Kafka consumer that reads messages from Kafka and 
+stores them in a PostgreSQL database using SQLAlchemy.
 """
 
 import time
